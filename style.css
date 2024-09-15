@@ -3,7 +3,14 @@
 body{
     font-family: "Poppins";
 }
+#root{
+  padding-left: 5%;
+}
 
+canvas{
+  padding-left: 5%;
+  margin-top: 20px;
+}
 
 input[type="file"] {
     position: relative;
