@@ -6,19 +6,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="./jQuery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
     <div id="root">
         <h1 id="title">Simulacion de Particulas</h1>
-        <input type="file" name="file" id="csvFile" class="input-file">
+        <div id="gridBtns">
+            <input type="file" name="file" id="csvFileInit" class="input-file" accept=".csv">
+            <input type="file" name="file" id="csvFileEnd" class="input-file" accept=".csv">
+            <button id="cleanBtn" type="button">Limpiar</button>
+        </div>
+        <canvas id="canvas" width="1700" height="1000"></canvas>
+        <footer>Hecho por Emanuel Espinosa y Lago Rodrigo</footer>
     </div>
-    
-
-    <canvas id="canvas" width="1700" height="1000"></canvas>
-
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js" ></script>
 </body>
 </html>

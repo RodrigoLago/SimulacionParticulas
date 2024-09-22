@@ -1,19 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body{
-    font-family: "Poppins";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Poppins";
 }
-#root{
-  padding-left: 5%;
+
+body{
+    
+    width: 100%;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura de la ventana */
+}
+#title{
+  margin: 1% 14%;
+}
+
+main {
+  flex: 1; /* Permite que el main ocupe el espacio restante */
 }
 
 canvas{
-  padding-left: 5%;
+  margin: 1% 14%;
   margin-top: 20px;
+  max-width: 80%;
+}
+#gridBtns{
+  margin: 0% 14%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+#cleanBtn{
+  height: 40px;
+  width: 136px;
+  margin-top: 10px;
+  background-color: rgb(255, 97, 97);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  color: #ffffff;
+  justify-self: end;
+}
+
+#cleanBtn:hover{
+  background-color: rgb(121, 13, 13);
+}
+
+#csvFileInit, #csvFileEnd{
+  width: 100%;
 }
 
 input[type="file"] {
     position: relative;
+    margin-top: 10px;
   }
   
   input[type="file"]::file-selector-button {
@@ -39,7 +83,7 @@ input[type="file"] {
     top: 11px;
     left: 40px;
     color: #0964b0;
-    content: "Upload File";
+    content: "Seleccionar";
   }
   
   /* ------- From Step 1 ------- */
@@ -67,3 +111,29 @@ input[type="file"] {
     background-color: #e5e7eb;
   }
   
+
+  @media (max-width: 1500px) {
+
+    #gridBtns{
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    #cleanBtn{
+      height: 40px;
+      width: 136px;
+      background-color: rgb(255, 97, 97);
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      color: #ffffff;
+      justify-self: start;
+    }
+  }
+
+
+
+  footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto; /* Empuja el footer al fondo del contenedor */
+}
