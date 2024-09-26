@@ -1,8 +1,9 @@
 export function ProcessCSV(csvString, isInit) {
-  //Split del CSV
+  //Split del CSV y trim
   const lines = csvString.trim().split("\n");
 
-  // Mapeo a Json
+  // Mapeo a Json y se le agrega el booleano para identificar el punto
+  //si es del csv del inicio o del final. La particula pasaria a tener "4 columnas".
   return lines.map((line) => {
     const values = line.split(",");
     return {
@@ -14,6 +15,7 @@ export function ProcessCSV(csvString, isInit) {
   });
 }
 
+//Funcion que limpia el canvas y tambien los archivos seleccionados
 export function CleanCanvas(){
     const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -25,6 +27,7 @@ export function CleanCanvas(){
   
 }
 
+//Funcion que renderiza los puntos
 export function DrawPoints(data) {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
@@ -32,19 +35,19 @@ export function DrawPoints(data) {
   // Limpiar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Configuracion del estilo del punto
+  // Radio del punto
   const radius = 5;
 
-  // Busco valores maximos y minimos de cada eje
+  // Valores maximos y minimos de cada eje para optimizar el canvas
   const xValues = data.map((point) => point.X);
   const yValues = data.map((point) => point.Y);
   const xMin = Math.min(...xValues);
   const xMax = Math.max(...xValues);
   const yMin = Math.min(...yValues);
   const yMax = Math.max(...yValues);
-  const innerMargin = 50; // Margen interno para los puntos
+  const innerMargin = 50; // Margen interno para separar de los ejes
 
-  // Agregar marcas de graduación y etiquetas
+  // Estilo de la letra
   ctx.fillStyle = "black";
   ctx.font = "15px Poppins";
 
@@ -86,28 +89,25 @@ export function DrawPoints(data) {
     ctx.arc(x, y, point.Masa, 0, 2 * Math.PI);
 
 
-    // Establecer color dependiendo del valor de EsInicio
+    // Establecer color del borde dependiendo del valor de EsInicio
     if (point.EsInicio) {
         ctx.fillStyle = "rgba(159, 90, 253, 0.5)"; // Color violeta si EsInicio es true
-        ctx.strokeStyle = "rgba(90, 34, 139, 0.7)"; // Borde violeta
+        ctx.strokeStyle = "rgba(90, 34, 139, 0.7)"; 
       } else {
         ctx.fillStyle = "rgba(34, 139, 34, 0.5)"; // Color verde si EsInicio es false
-        ctx.strokeStyle = "rgba(0, 100, 0, 0.7)"; // Borde verde
+        ctx.strokeStyle = "rgba(0, 100, 0, 0.7)";
       }
 
-
-    //ctx.fillStyle = "rgba(159, 90, 253, 0.5)"; // Color del relleno del punto
     ctx.fill();
-    // Borde del punto
-    //ctx.strokeStyle = "rgba(90, 34, 139, 0.7)"; // Color del borde del punto
+    // Establecer color del relleno dependiendo del valor de EsInicio
     if (point.EsInicio) {
-        ctx.fillStyle = "rgba(159, 90, 253, 0.5)"; // Color violeta si EsInicio es true
-        ctx.strokeStyle = "rgba(90, 34, 139, 0.7)"; // Borde violeta
-      } else {
-        ctx.fillStyle = "rgba(34, 139, 34, 0.5)"; // Color verde si EsInicio es false
-        ctx.strokeStyle = "rgba(0, 100, 0, 0.7)"; // Borde verde
-      }
-    //ctx.lineWidth = 0.1*point.Masa; // Ancho del borde
+      ctx.fillStyle = "rgba(159, 90, 253, 0.5)"; // Color violeta si EsInicio es true
+      ctx.strokeStyle = "rgba(90, 34, 139, 0.7)"; // Borde violeta
+    } else {
+      ctx.fillStyle = "rgba(34, 139, 34, 0.5)"; // Color verde si EsInicio es false
+      ctx.strokeStyle = "rgba(0, 100, 0, 0.7)"; // Borde verde
+    }
+    
     ctx.stroke();
   });
   // Dibujar el eje X
