@@ -119,16 +119,3 @@ export function DrawPoints(data) {
   ctx.fillStyle = "black"; // Color de la línea del eje Y
   ctx.fillRect(-grosorEjes / 2, 0, grosorEjes, canvas.height);
 }
-
-export function MergeJson(source, target) {
-  Object.keys(source).forEach(function (key) {
-    if (!source[key]) {
-      return;
-    }
-    if (typeof source[key] === "object") {
-      target[key] = target[key] || (Array.isArray(source[key]) ? [] : {});
-      return MergeJson(source[key], target[key]);
-    }
-    target[key] = source[key];
-  });
-}
