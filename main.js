@@ -1,6 +1,6 @@
 
 //Se importan las funciones necesarias
-import { DrawPoints, ProcessCSV, CleanCanvas } from "./helper.js";
+import { DrawPoints, ProcessCSV, CleanCanvasAndFiles } from "./helper.js";
 
 //Inicialización de las listas de partículas
 let jsonInicio = [];
@@ -30,7 +30,7 @@ function CsvUploadHandler(event, isInicio) {
 
 //Funcion disparada al limpiar
 function Clear(){
-  CleanCanvas();
+  CleanCanvasAndFiles();
   jsonInicio = jsonFinal = jsonMerged = [];
 }
 

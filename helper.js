@@ -16,7 +16,7 @@ export function ProcessCSV(csvString, isInit) {
 }
 
 //Funcion que limpia el canvas y tambien los archivos seleccionados
-export function CleanCanvas(){
+export function CleanCanvasAndFiles(){
     const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
 
